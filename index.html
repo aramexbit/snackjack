@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNACKJACK ($SNKJ) — The seagull that steals your fries</title>
+<meta name="description" content="SNACKJACK ($SNKJ) — memecoin camar pencuri kentang di Solana, via pump.fun. Situs contoh — alamat kontrak dan link diisi saat launch.">
+<style>
+  :root{
+    --bg:#0b0e13; --surface:#14181f; --surface2:#1a1f28;
+    --text:#f2f4f7; --muted:#9aa3af; --border:#232936;
+    --orange:#ff7a1a; --teal:#14b8a6; --red:#ff4d4d;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55}
+  a{color:var(--teal); text-decoration:none}
+  .wrap{max-width:880px; margin:0 auto; padding:0 20px 64px}
+  .sample{margin:18px 0 0; display:inline-block; background:#2a2118; color:#ffb066; border:1px solid #5a3a1a; border-radius:999px; padding:6px 14px; font-size:13px; font-weight:600}
+  header.hero{display:flex; gap:28px; align-items:center; padding:36px 0 8px; flex-wrap:wrap}
+  header.hero img.logo{width:180px; height:180px; object-fit:cover; border-radius:24px; border:2px solid var(--border); background:var(--surface); flex:0 0 auto}
+  header.hero h1{font-size:52px; line-height:1.05; letter-spacing:-1px}
+  header.hero h1 span{color:var(--orange)}
+  .ticker{font-size:20px; color:var(--teal); font-weight:700; margin-top:4px}
+  .tagline{font-size:19px; color:var(--muted); margin-top:10px; max-width:520px}
+  .badge{display:inline-block; margin-top:14px; background:var(--surface2); border:1px solid var(--border); border-radius:999px; padding:6px 14px; font-size:14px; color:var(--text)}
+  .badge b{color:var(--orange)}
+  .actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+  .btn{display:inline-block; padding:13px 22px; border-radius:12px; font-weight:700; font-size:16px; border:1px solid transparent; cursor:pointer; background:var(--orange); color:#14100a}
+  .btn.ghost{background:var(--surface); color:var(--text); border-color:var(--border)}
+  .btn:hover{filter:brightness(1.1)}
+  .ca{margin-top:22px; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+  .ca code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:14px; color:var(--muted); word-break:break-all}
+  .ca .copy{margin-left:auto; background:var(--surface2); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:9px 14px; font-weight:700; cursor:pointer; font-size:14px}
+  section{margin-top:44px}
+  h2{font-size:24px; margin-bottom:14px; letter-spacing:-.3px}
+  .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+  .stat{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px}
+  .stat .k{font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:.5px}
+  .stat .v{font-size:24px; font-weight:800; margin-top:4px}
+  .stat .s{font-size:13px; color:var(--muted); margin-top:2px}
+  .statusline{margin-top:12px; font-size:14px; color:var(--muted)}
+  .statusline .dot{color:var(--orange); font-weight:700}
+  .card{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:20px}
+  .about p{margin-bottom:10px; color:#d6dae1}
+  .about p b{color:var(--text)}
+  ol.steps{list-style:none; counter-reset:step}
+  ol.steps li{counter-increment:step; background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px 18px 16px 58px; margin-bottom:12px; position:relative}
+  ol.steps li::before{content:counter(step); position:absolute; left:16px; top:14px; width:28px; height:28px; border-radius:50%; background:var(--orange); color:#14100a; font-weight:800; display:flex; align-items:center; justify-content:center; font-size:15px}
+  .links{display:flex; gap:12px; flex-wrap:wrap}
+  .links .btn.ghost{flex:1 1 160px; text-align:center}
+  footer{margin-top:52px; border-top:1px solid var(--border); padding-top:20px; color:var(--muted); font-size:14px}
+  footer b{color:var(--text)}
+  #toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); background:var(--surface2); border:1px solid var(--border); color:var(--text); padding:12px 20px; border-radius:12px; font-size:15px; opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:10}
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+  @media (max-width:640px){
+    header.hero h1{font-size:38px}
+    header.hero img.logo{width:128px; height:128px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="sample">CONTOH — situs contoh · alamat kontrak &amp; link diisi saat launch</span>
+
+  <header class="hero">
+    <img class="logo" src="assets/snackjack-logo.webp" alt="Logo SNACKJACK — camar kartun menggigit kentang goreng">
+    <div>
+      <h1>SNACK<span>JACK</span></h1>
+      <div class="ticker">$SNKJ · Solana · pump.fun</div>
+      <p class="tagline">The seagull that steals your fries. He steals fries. He steals SOL.</p>
+      <div class="badge">Rencana launch: <b>Rabu, 25 Nov 2026</b></div>
+      <div class="actions">
+        <a class="btn" href="https://pump.fun" target="_blank" rel="noopener">Beli di pump.fun</a>
+        <button class="btn ghost" id="copyBtn" type="button">Salin alamat kontrak</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="ca">
+    <code id="caText">CA: belum dirilis — alamat kontrak muncul di sini saat launch</code>
+    <button class="copy" id="copyBtn2" type="button">Salin</button>
+  </div>
+
+  <section>
+    <h2>Statistik live</h2>
+    <div class="stats">
+      <div class="stat"><div class="k">Harga</div><div class="v" id="statPrice">—</div><div class="s" id="statPriceUsd">—</div></div>
+      <div class="stat"><div class="k">Market cap</div><div class="v" id="statMcap">—</div><div class="s">SOL</div></div>
+      <div class="stat"><div class="k">Volume 24 jam</div><div class="v" id="statVol">—</div><div class="s">SOL</div></div>
+      <div class="stat"><div class="k">Holder</div><div class="v" id="statHolders">—</div><div class="s">dompet</div></div>
+    </div>
+    <p class="statusline"><span class="dot" id="liveDot">● MENUNGGU LAUNCH</span> <span id="updatedAt">— data muncul setelah trade pertama</span></p>
+  </section>
+
+  <section>
+    <h2>Live dari pump.fun</h2>
+    <div class="card">
+      <p>Saat launch, stream live koin ini tayang di halaman pump.fun — layar kerja
+      nyata, panel harga live, dan alamat kontrak di ticker bawah.</p>
+      <p style="margin-top:12px"><a class="btn" href="https://pump.fun" target="_blank" rel="noopener">Tonton live di pump.fun</a></p>
+      <p style="margin-top:12px; color:var(--muted); font-size:14px">Video promo 45 detik ditambahkan di sini setelah selesai dirender.</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>Apa itu SNACKJACK?</h2>
+    <p><b>Leluconnya:</b> seekor camar yang mencuri kentang goreng — dan menjaga kentang terakhirnya dengan nyawanya.</p>
+    <p><b>Vibes-nya:</b> neon Miami, nol janji, nol roadmap. Sekadar camar, kentang, dan kalung emas.</p>
+    <p><b>Faktanya:</b> memecoin di Solana, dibuat lewat pump.fun, mode Creator Fee. Fee kreator 0,30% dari volume trading — bukan janji harga.</p>
+  </section>
+
+  <section>
+    <h2>Cara beli (3 langkah)</h2>
+    <ol class="steps">
+      <li>Siapkan SOL di wallet Solana kamu.</li>
+      <li>Buka halaman koin SNACKJACK di pump.fun (tombol di atas).</li>
+      <li>Pastikan alamat kontraknya sama persis dengan yang ada di halaman ini, baru swap. Jangan percaya alamat kontrak dari kolom komentar atau DM.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Link</h2>
+    <div class="links">
+      <a class="btn ghost" href="https://pump.fun" target="_blank" rel="noopener">pump.fun</a>
+      <a class="btn ghost" href="#" onclick="soon(event)">Telegram (segera)</a>
+      <a class="btn ghost" href="#" onclick="soon(event)">X (segera)</a>
+      <a class="btn ghost" href="#" onclick="soon(event)">@snackjack_snkj_bot (segera)</a>
+    </div>
+    <p style="margin-top:12px; color:var(--muted); font-size:14px">Link Telegram dan bot dibuat saat launch; halaman ini contoh — link diisi setelah grup dan bot dibuat.</p>
+  </section>
+
+  <footer>
+    <p><b>SNACKJACK adalah memecoin. Harganya bisa jadi nol.</b> Tidak ada satu pun di halaman ini yang merupakan saran finansial. Selalu verifikasi alamat kontrak sebelum setiap trade — scammer memposting alamat palsu di komentar dan DM.</p>
+    <p style="margin-top:10px">Situs contoh — dibuat sebagai template launch. Nama, logo, dan isi bisa diganti bila keputusan nama berubah (mis. LASTFRY).</p>
+  </footer>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script>
+  // SATU-SATUNYA tempat alamat kontrak disimpan. Isi saat launch; kosong = mode contoh.
+  const MINT = ""; // contoh: "DhLqheMQTimWUHdiQ2NR4jdLuhnrxHmFJ2ofMpdipump"
+  const PUMP_COIN_URL = "https://pump.fun"; // ganti ke https://pump.fun/coin/<MINT> saat launch
+
+  const toast = document.getElementById("toast");
+  let toastTimer = null;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove("show"), 2600);
+  }
+  function soon(e){ e.preventDefault(); showToast("Link ini diisi saat launch."); }
+  function copyCA(){
+    if(!MINT){ showToast("Alamat kontrak belum tersedia — muncul di sini saat launch."); return; }
+    navigator.clipboard.writeText(MINT).then(
+      ()=>showToast("Alamat kontrak disalin."),
+      ()=>showToast("Gagal menyalin — salin manual dari kotak di atas.")
+    );
+  }
+  document.getElementById("copyBtn").addEventListener("click", copyCA);
+  document.getElementById("copyBtn2").addEventListener("click", copyCA);
+
+  // Statistik live (DexScreener, gratis, tanpa key). Hanya jalan bila MINT sudah diisi.
+  const liveDot = document.getElementById("liveDot");
+  const updatedAt = document.getElementById("updatedAt");
+  let lastOkAt = null, lastData = null;
+
+  function fmt(n, d){
+    if(n === null || n === undefined || isNaN(n)) return "—";
+    return Number(n).toLocaleString("en-US", {maximumFractionDigits: d === undefined ? 2 : d});
+  }
+  function renderStats(){
+    if(!lastData) return;
+    const p = lastData;
+    document.getElementById("statPrice").textContent = p.priceSol ? fmt(p.priceSol, 6) + " SOL" : "—";
+    document.getElementById("statPriceUsd").textContent = p.priceUsd ? "$" + fmt(p.priceUsd, 6) : "—";
+    document.getElementById("statMcap").textContent = p.marketCap ? "$" + fmt(p.marketCap, 0) : "—";
+    document.getElementById("statVol").textContent = p.volume && p.volume.h24 ? "$" + fmt(p.volume.h24, 0) : "—";
+    document.getElementById("statHolders").textContent = "—";
+  }
+  function tickClock(){
+    if(!lastOkAt) return;
+    const age = Math.round((Date.now() - lastOkAt) / 1000);
+    const stale = age > 90;
+    liveDot.textContent = stale ? "● STALE" : "● LIVE";
+    liveDot.style.color = stale ? "#ffb066" : "#14b8a6";
+    updatedAt.textContent = "— diperbarui " + age + " dtk lalu" + (stale ? " (data mungkin basi)" : "");
+  }
+  async function fetchStats(){
+    if(!MINT) return; // mode contoh: tidak ada yang di-fetch
+    try{
+      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/" + MINT);
+      const j = await r.json();
+      const pairs = (j.pairs || []).filter(x => x.chainId === "solana");
+      if(!pairs.length){ updatedAt.textContent = "— menunggu trade pertama"; return; }
+      lastData = pairs[0];
+      lastOkAt = Date.now();
+      renderStats(); tickClock();
+    }catch(e){
+      // gagal fetch: tampilkan data terakhir + umur, jangan angka karangan
+      if(lastData){ renderStats(); tickClock(); }
+      else { updatedAt.textContent = "— gagal memuat data, coba lagi nanti"; }
+    }
+  }
+  if(MINT){
+    document.getElementById("caText").textContent = "CA: " + MINT;
+    fetchStats();
+    setInterval(fetchStats, 30000);
+    setInterval(tickClock, 1000);
+  }
+</script>
+</body>
+</html>
